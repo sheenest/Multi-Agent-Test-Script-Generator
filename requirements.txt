@@ -1,0 +1,39 @@
+# =============================================================================
+# Multi-Agent Test Script Generator — Python Dependencies
+# =============================================================================
+# Install with:  pip install -r requirements.txt
+# Python:        >= 3.10 required
+# =============================================================================
+
+# ── Strands Agents SDK ──────────────────────────────────────────────────────
+# Core SDK: agent loop, model providers, tool system, GraphBuilder
+strands-agents>=1.30
+
+# Community tools package: pre-built tools (calculator, file ops, etc.)
+# Not strictly required for this project since we write custom tools,
+# but useful for experimentation and future expansion.
+strands-agents-tools
+
+# ── Amazon Bedrock (AWS) ────────────────────────────────────────────────────
+# AWS SDK for Python — used for Bedrock runtime calls (embeddings via Titan)
+# and pulled in automatically by strands-agents, but pinned here for clarity.
+boto3>=1.35
+
+# AWS CLI — for configuring credentials (aws configure)
+awscli
+
+# ── Pinecone Vector Database ────────────────────────────────────────────────
+# Official Pinecone Python SDK (v9+)
+# Note: the package name is "pinecone", NOT "pinecone-client" (renamed in v5.1)
+pinecone>=9.0
+
+# ── Utilities ───────────────────────────────────────────────────────────────
+# Data validation / structured output (used by Strands internally, useful
+# if you want to add structured output to your agents later)
+pydantic>=2.0
+
+# Pretty terminal output for development / debugging
+rich
+
+# Load environment variables from a .env file (optional but recommended)
+python-dotenv
