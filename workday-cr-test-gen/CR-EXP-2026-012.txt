@@ -1,0 +1,22 @@
+Test CR - CR-EXP-2026-012
+
+Business Requirement
+Agency X has a new Health Screening Benefit for employees. This Health Screening Benefit is only eligible for Permanent and Fixed Term in Agency X and is only claimable up tp $200 per calendar year.
+Employees can only claim from the benefit a maximum of 2 times a year, even if there is still remaining balance for the employee. 
+The Health Screening Benefit should be based on a reimbursable allowance plan and be defaulted in the employees' compensation package when being hired into the agency. 
+
+Solution Design
+1. Configure new Expense Item 'Health Screening Benefit(X)", 
+--- Expense Item Group: HR Benefit 
+--- Expense Policy Group: Agency X
+--- Integration ID: "EI_Health_Screening_Benefit".
+--- Pay Element: E09123 - Health Screening
+2. Create a new Allowance Plan "Health Screening Benefit(X)"
+--- Amount: $200 
+--- Expense Accumulator: Year to date
+--- Refreshes at start of every Calendar Year (1st Jan)
+--- Eligibility Rule: Agency X - Fixed Term and Permanent Staff 
+3. Create new Custom Validation: EXP - Health Screening Benefit(X) can only be claimed 2 times per year
+--- to configure custom validation so that:
+------ Employees can only claim on the Health Screening Benefit up to 2 times in the current calendar year
+------ For Employees that still have balance from last year, they can only backclaim on the Health Screening Benefit up to 2 times in the previous calendar year.

@@ -1,0 +1,36 @@
+Test CR
+
+Business Requirement
+The Travel & Events team requires a new expense item for 'Team Building \
+Activities' to track department-sponsored team events separately from \
+general entertainment. Each event expense must be tied to a pre-approved \
+event code from HR. A per-event cap of $2,000 must be enforced, and a \
+per-worker annual cap of $5,000 across all team building claims. Events \
+older than 45 days should not be reimbursable. Only full-time employees \
+in active status are eligible. A mandatory 'Event Description' field with \
+minimum 30 characters is required for all claims.
+
+Solution Design
+1. Configure new Expense Item 'Team Building Activity' \
+(ID: EXP_TEAM_BUILD) under new expense group 'Team Events'. Available \
+to all cost centers.
+2. Add mandatory custom fields: 'HR Event Code' (text, validated against \
+HR event reference table), 'Event Description' (text, min 30 chars), \
+'Number of Attendees' (integer, min 2).
+3. Create Validation Rule 1 (CR_EXP_TeamBuild_EventCap): On expense line \
+submit, if item is 'Team Building Activity' and line amount exceeds \
+$2,000, hard stop with message 'Per-event cap of $2,000 exceeded.'
+4. Create Validation Rule 2 (CR_EXP_TeamBuild_AnnualCap): Track cumulative \
+per-worker calendar-year spend; if total exceeds $5,000, hard stop with \
+message 'Annual team building cap of $5,000 exceeded.'
+5. Create Validation Rule 3 (CR_EXP_TeamBuild_DateWindow): If expense date \
+is more than 45 days before submission date, hard stop with message \
+'Team building expenses must be submitted within 45 days.'
+6. Create Validation Rule 4 (CR_EXP_TeamBuild_Eligibility): If worker is \
+not Full-Time Employee in Active status, hard stop with message 'Only \
+active full-time employees are eligible.'
+7. Create Validation Rule 5 (CR_EXP_TeamBuild_EventCode): If HR Event Code \
+is blank or does not match HR reference table, hard stop with message \
+'Valid HR Event Code required.'
+8. Receipt requirement set to Always for this item. No changes to approval \
+workflow; inherits current chain.
