@@ -22,6 +22,10 @@ boto3>=1.35
 # AWS CLI — for configuring credentials (aws configure)
 awscli
 
+# Document Parsing
+python-docx>=1.1
+openpyxl>=3.1
+
 # ── Pinecone Vector Database ────────────────────────────────────────────────
 # Official Pinecone Python SDK (v9+)
 # Note: the package name is "pinecone", NOT "pinecone-client" (renamed in v5.1)

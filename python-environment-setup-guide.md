@@ -99,7 +99,7 @@ source .venv/bin/activate
 
 **Windows (Command Prompt):**
 ```cmd
-.venv\Scripts\activate.bat
+.venv\Scripts\activate
 ```
 
 **Windows (PowerShell):**
